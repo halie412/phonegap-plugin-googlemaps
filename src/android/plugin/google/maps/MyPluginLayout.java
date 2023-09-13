@@ -437,6 +437,16 @@ public class MyPluginLayout extends FrameLayout implements ViewTreeObserver.OnSc
       Bundle domInfo = HTMLNodes.get(domId);
       Bundle zIndexProp;
       int containMapCnt = 0;
+
+      // 2023sep13 agregado para descartar error cuando domInfo es null
+      if (domInfo == null) {
+          // enviar log
+          Log.e("TAG", "domInfo es null, no se puede terminar la función");
+          // detener la función
+          return null;
+      }
+      // fin agregado
+      
       if (domInfo.containsKey("containMapIDs")) {
         Set<String> keys = domInfo.getBundle("containMapIDs").keySet();
         if (keys != null) {
