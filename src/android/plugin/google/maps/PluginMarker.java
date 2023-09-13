@@ -495,6 +495,17 @@ public class PluginMarker extends MyPlugin implements MyPluginInterface {
     cordova.getActivity().runOnUiThread(new Runnable() {
       @Override
       public void run() {
+        // 2023sep13 agregado para descartar errores cuando map es null
+        if (map == null) {
+            // enviar log
+            Log.e("TAG", "map es null, no se puede manipular el marker");
+            // dar por terminado el proceso del marker
+            callback.onPostExecute(marker);
+            // detener la función
+            return;
+        }
+        // final agregado
+        
         final Handler handler = new Handler();
         final Projection proj = map.getProjection();
         final LatLng markerLatLng = marker.getPosition();
