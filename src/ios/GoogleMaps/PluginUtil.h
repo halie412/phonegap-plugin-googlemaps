@@ -20,7 +20,6 @@
 #import "IPluginProtocol.h"
 #import "PluginViewController.h"
 #import <Cordova/CDVCommandDelegate.h>
-#import <Cordova/CDVCommandDelegateImpl.h>
 
 typedef void (^MYCompletionHandler)(NSError *error);
 
